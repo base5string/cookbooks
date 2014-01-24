@@ -1,0 +1,14 @@
+#
+# Cookbook Name:: shi_bosh_cli
+# Recipe:: default
+#
+# Copyright 2014, YOUR_COMPANY_NAME
+#
+# All rights reserved - Do Not Redistribute
+#
+include_recipe "shi_ruby"
+
+gem_package "bosh_cli" do
+  action :install
+end
+
