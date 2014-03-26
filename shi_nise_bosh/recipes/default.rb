@@ -13,6 +13,8 @@ NBOSH_ROOT  = "#{INSTALL_DIR}/nise_bosh"
 include_recipe "shi_ruby"
 
 DEPENDS_PACKAGE = [
+  "libxslt-dev",
+  "libxml2-dev",
   "git-core",
   "g++"
 ].each { |package|

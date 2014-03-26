@@ -60,3 +60,4 @@ bash "Enable OpenSSL" do
   action     :nothing
   subscribes :run, "bash[Install #{MEDIA_URL}]", :immediately
 end
+
