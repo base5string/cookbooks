@@ -6,9 +6,12 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-if node[:shi_mysql][:ReplicaSets] != nil then
-  include_recipe "shi_mysql::deploy_replica"
-else
-  include_recipe "shi_mysql::deploy_server"
+#if node[:shi_mysql][:ReplicaSets] != nil then
+#  include_recipe "shi_mysql::deploy_replica"
+#else
+#  include_recipe "shi_mysql::deploy_server"
+#end
+deploy_mysql_server "Deploy MySQL Server" do
+  action :deploy
 end
 
