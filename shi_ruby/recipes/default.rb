@@ -16,7 +16,8 @@ RUBY_ROOT   =  "#{INSTALL_DIR}/#{MEDIA_BASE}"
 
 DEPENDS_PACKAGES = [
   "zlib1g-dev",
-  "libssl-dev"
+  "libssl-dev",
+  "libxml2-dev"
 ].each { |package|
   package "#{package}" do
     action :install
@@ -53,6 +54,16 @@ end
 
 bash "Enable OpenSSL" do
   cwd        "#{RUBY_ROOT}/ext/openssl"
+  code       <<-EOH
+    ruby ./extconf.rb
+    make install
+  EOH
+  action     :nothing
+  subscribes :run, "bash[Install #{MEDIA_URL}]", :immediately
+end
+
+bash "Enable Readline" do
+  cwd        "#{RUBY_ROOT}/ext/readline"
   code       <<-EOH
     ruby ./extconf.rb
     make install
